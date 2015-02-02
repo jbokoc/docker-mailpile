@@ -1,33 +1,27 @@
 FROM ubuntu:14.10
 MAINTAINER https://m-ko-x.de Markus Kosmal <code@m-ko-x.de>
- 
+
 RUN apt-get update -y
 
 # Force -y for apt-get
-#######################
 RUN echo "APT::Get::Assume-Yes true;" >>/etc/apt/apt.conf
- 
-RUN apt-get install curl unzip git make python-pip && apt-get clean
- 
- 
-# Add app
-##################
-WORKDIR /
-RUN git clone https://github.com/mailpile/Mailpile.git
+
+# Add code & install the requirements
+RUN apt-get install make python-pip && apt-get clean
+ADD Makefile /Mailpile/Makefile
 WORKDIR /Mailpile
-RUN pip install -r requirements.txt
-
-# Build app
-###########
 RUN make debian-dev && apt-get clean
-RUN ./mp setup
- 
 
-VOLUME ["/root/.local/share/Mailpile"]
- 
-EXPOSE 33411
- 
-RUN /Mailpile/mp --www=0.0.0.0:33411 --wait
+# Add code
+ADD . /Mailpile
+
+# Setup
+RUN ./mp --setup
+RUN ./mp --set sys.http_host=0.0.0.0:80
+
+CMD /Mailpile/mp www
+EXPOSE 80
+VOLUME /.mailpile
 
 ADD run.sh /run.sh
 
