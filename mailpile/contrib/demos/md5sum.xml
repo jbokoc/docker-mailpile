@@ -1,5 +1,0 @@
-<md5sum>
-  <status>{{ status }}</status>
-  <message>{{ message }}</message>
-  <result>{{ result }}</result>
-</md5sum>
