@@ -8,9 +8,7 @@ RUN apt-get update -y
 RUN echo "APT::Get::Assume-Yes true;" >>/etc/apt/apt.conf
 
 # Add code & install the requirements
-RUN apt-get install make python-pip git gnupg openssl python-devel libxml2-devel libxslt-devel \
-    zlibrary-devel python-jinja2 python3-jinja2 python-lxml \
-    python3-lxml python-pgpdump python3-pgpdump && apt-get clean
+RUN apt-get install make python-pip git gnupg openssl python-devel && apt-get clean
 
 WORKDIR /Mailpile
 
