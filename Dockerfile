@@ -4,25 +4,34 @@ MAINTAINER https://m-ko-x.de Markus Kosmal <code@m-ko-x.de>
 RUN apt-get update -y
 
 # Force -y for apt-get
+#######################
 RUN echo "APT::Get::Assume-Yes true;" >>/etc/apt/apt.conf
-
-# Add code & install the requirements
-RUN apt-get install make python-pip && apt-get clean
-ADD Makefile /Mailpile/Makefile
+ 
+RUN apt-get install curl unzip git make python-pip && apt-get clean
+ 
+ 
+# Add app
+##################
+WORKDIR /
+RUN git clone https://github.com/mailpile/Mailpile.git
 WORKDIR /Mailpile
+RUN git checkout release/beta
+# Build app
+###########
 RUN make debian-dev && apt-get clean
+RUN ./mp setup
+ 
+ 
+# Add dockerize startup script
+##############################
+RUN apt-get install -y wget
+RUN wget https://github.com/jwilder/dockerize/releases/download/v0.0.2/dockerize-linux-amd64-v0.0.2.tar.gz
+RUN tar -C /usr/local/bin -xzvf dockerize-linux-amd64-v0.0.2.tar.gz
+RUN chmod +x /usr/local/bin/dockerize
 
-# Add code
-ADD . /Mailpile
-
-# Setup
-RUN ./mp --setup
-RUN ./mp --set sys.http_host=0.0.0.0:80
-
-CMD /Mailpile/mp www
-EXPOSE 80
-VOLUME /.mailpile
-
-ADD run.sh /run.sh
-
-CMD ["/run.sh"]
+ 
+VOLUME ["/root/.local/share/Mailpile"]
+ 
+EXPOSE 33411
+ 
+CMD "dockerize" "/Mailpile/mp" "--www=0.0.0.0:33411" "--wait"
