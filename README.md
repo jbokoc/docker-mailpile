@@ -1,3 +1,9 @@
+#REJECTED
+Not recommended to use in production yet. Even Beta is not handable at all at the moment.
+
+For more information have a look at [http://mailpile.is](mailpile.is).
+
+
 Mailpile Beta
 ===============
 
