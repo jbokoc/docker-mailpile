@@ -11,11 +11,11 @@ Docker build for the modern, fast web based email client with user-friendly encr
 
 Example run command: 
 
-    docker run -d --name=mailpile -p 127.0.0.1:33411:33411 staannoe/mailpile
+    docker run -d --name=mailpile -p 127.0.0.1:33411:33411 mkodockx/docker-mailpile
 
 Example run command (exposing the storage volume):
 
-    docker run -d --name=mailpile -p 127.0.0.1:33411:33411 -v <storage location>:/root/.local/share/Mailpile staannoe/mailpile
+    docker run -d --name=mailpile -p 127.0.0.1:33411:33411 -v <storage location>:/root/.local/share/Mailpile mkodockx/docker-mailpile
 
 Access Mailpile entering the url:
 
