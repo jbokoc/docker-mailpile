@@ -1,11 +1,10 @@
-#REJECTED
-Not recommended to use in production yet. Even Beta is not handable at all at the moment.
+# Attention
+Not recommended to use in production yet. Even Beta is not really handable at all at the moment.
 
 For more information have a look at [mailpile.is](http://mailpile.is).
 
 
-Mailpile Beta
-===============
+# docker-mailpile
 
 Docker build for the modern, fast web based email client with user-friendly encryption and privacy features
 
