@@ -1,4 +1,4 @@
-FROM ubuntu:15.04
+FROM ubuntu:14.04
 MAINTAINER https://m-ko-x.de Markus Kosmal <code@m-ko-x.de>
 
 RUN apt-get update -y -qq
