@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER https://m-ko-x.de Markus Kosmal <code@m-ko-x.de>
 
-RUN apt-get update -y -qq
+RUN apt-get update -y -q
 
 RUN echo "APT::Get::Assume-Yes true;" >>/etc/apt/apt.conf
  
