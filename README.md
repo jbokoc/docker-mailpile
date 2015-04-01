@@ -6,7 +6,9 @@ For more information have a look at [mailpile.is](http://mailpile.is).
 
 # docker-mailpile
 
-Docker build for the modern, fast web based email client with user-friendly encryption and privacy features
+Docker build for the modern, fast web based email client with user-friendly encryption and privacy features.
+
+Running themable variant to allow custom colors.
 
 Example run command: 
 
