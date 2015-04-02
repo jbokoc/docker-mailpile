@@ -8,7 +8,7 @@ For more information have a look at [mailpile.is](http://mailpile.is).
 
 Docker build for the modern, fast web based email client with user-friendly encryption and privacy features.
 
-Running themable variant to allow custom colors.
+Running themable variant to allow custom colors extension.
 
 Example run command: 
 
