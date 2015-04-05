@@ -10,7 +10,7 @@ RUN apt-get install -y -qq curl unzip git make python-pip wget && apt-get clean 
 WORKDIR /
 RUN git clone https://das-repo.de/web/Mailpile.git
 WORKDIR /Mailpile
-# RUN git checkout release/beta
+RUN git checkout stable
 
 RUN make debian-dev && apt-get clean
 RUN ./mp setup
